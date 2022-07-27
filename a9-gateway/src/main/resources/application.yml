@@ -1,0 +1,21 @@
+spring:
+  cloud:
+    gateway:
+      default-filters:
+        - DedupeResponseHeader=Vary Access-Control-Allow-Credentials Access-Control-Allow-Origin
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedHeaders: "*"
+            allowedMethods: "*"
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: auth
+          uri: lb://a9-auth
+          predicates:
+            - Path=/auth/**
+          filters:
+            - StripPrefix=1
