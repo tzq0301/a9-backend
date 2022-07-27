@@ -16,6 +16,30 @@
 
     <name>a9-backend</name>
 
+    <repositories>
+        <repository>
+            <id>GitHub</id>
+            <url>https://github.com/tzq0301/a9-backend</url>
+        </repository>
+    </repositories>
+
+    <developers>
+        <developer>
+            <name>童昭旗</name>
+            <url>https://tzq0301.cn</url>
+            <email>tzq0301@gmail.com</email>
+        </developer>
+        <developer>
+            <name>李博</name>
+        </developer>
+        <developer>
+            <name>唐靖宇</name>
+        </developer>
+        <developer>
+            <name>刘雨果</name>
+        </developer>
+    </developers>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>11</maven.compiler.source>
@@ -23,6 +47,7 @@
         <spring.boot.version>2.7.2</spring.boot.version>
         <spring.cloud.version>2021.0.3</spring.cloud.version>
         <spring.cloud.alibaba.version>2021.0.1.0</spring.cloud.alibaba.version>
+        <spring.data.mongo.version>2.7.0</spring.data.mongo.version>
     </properties>
 
     <dependencyManagement>
@@ -49,6 +74,12 @@
                 <version>${spring.cloud.alibaba.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-mongodb</artifactId>
+                <version>${spring.data.mongo.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

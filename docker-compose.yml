@@ -1,36 +1,31 @@
-version: '3'
+version: '3.9'
+
 services:
   a9-mongo:
-    image: mongo
+    image: mongo:4.4.6
     container_name: a9-mongo
-    hostname: a9-mongo
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: "${A9_MONGO_USERNAME}"
-      MONGO_INITDB_ROOT_PASSWORD: "${A9_MONGO_PASSWORD}"
     volumes:
-      - mongo_data:/data/db
+      - mongo_db:/data/db
       - mongo_backup:/data/backup
-      - mongo_conf:/data/configdb
-    networks:
-      - a9
+      - mongo_configdb:/data/configdb
+    ports:
+      - "27017:27017"
 
   a9-auth:
     container_name: a9-auth
-    hostname: a9-auth
     build:
       context: a9-auth
     ports:
       - "${A9_AUTH_PORT}:8080"
-    networks:
-      - a9
+    depends_on:
+      - a9-mongo
+    links:
+      - a9-mongo:a9-mongo
 
 volumes:
-  mongo_data:
+  mongo_db:
     driver: local
   mongo_backup:
     driver: local
-  mongo_conf:
+  mongo_configdb:
     driver: local
-
-networks:
-  a9:
