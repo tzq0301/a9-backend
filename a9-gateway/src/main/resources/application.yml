@@ -1,4 +1,6 @@
 spring:
+  redis:
+    host: a9-redis-master
   cloud:
     gateway:
       default-filters:

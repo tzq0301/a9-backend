@@ -68,6 +68,37 @@ services:
     volumes:
       - ./nacos:/docker-entrypoint-initdb.d
 
+  a9-redis-master:
+    image: redis
+    container_name: a9-redis-master
+    restart: always
+    command: redis-server --requirepass 123456  --masterauth 123456
+    ports:
+      - "6380:6379"
+    volumes:
+      - redis_master_conf:/usr/local/etc/redis/redis.conf
+      - redis_master_data:/data/
+  a9-redis-slave1:
+    image: redis
+    container_name: a9-redis-slave-1
+    restart: always
+    command: redis-server --slaveof a9-redis-master 6379 --requirepass 123456 --masterauth 123456
+    ports:
+      - "6381:6379"
+    volumes:
+      - redis_slave_1_conf:/usr/local/etc/redis/redis.conf
+      - redis_slave_1_data:/data/
+  a9-redis-slave2:
+    image: redis
+    container_name: a9-redis-slave-2
+    restart: always
+    command: redis-server --slaveof a9-redis-master 6379 --requirepass 123456 --masterauth 123456
+    ports:
+      - "6382:6379"
+    volumes:
+      - redis_slave_2_conf:/usr/local/etc/redis/redis.conf
+      - redis_slave_2_data:/data/
+
 volumes:
   mongo_db:
     driver: local
@@ -75,3 +106,16 @@ volumes:
     driver: local
   mongo_configdb:
     driver: local
+  redis_master_conf:
+    driver: local
+  redis_master_data:
+    driver: local
+  redis_slave_1_conf:
+    driver: local
+  redis_slave_1_data:
+    driver: local
+  redis_slave_2_conf:
+    driver: local
+  redis_slave_2_data:
+    driver: local
+
