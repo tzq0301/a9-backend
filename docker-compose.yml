@@ -19,8 +19,41 @@ services:
       - "${A9_AUTH_PORT}:8080"
     depends_on:
       - a9-mongo
+      - a9-nacos
     links:
       - a9-mongo:a9-mongo
+      - a9-nacos:a9-nacos
+
+  a9-nacos:
+    image: nacos/nacos-server:v2.1.0-slim
+    container_name: a9-nacos
+    ports:
+      - "8848:8848"
+      - "9848:9848"
+      - "9849:9849"
+    environment:
+      MODE: "standalone"
+      SPRING_DATASOURCE_PLATFORM: "mysql"
+      MYSQL_SERVICE_HOST: "a9-nacos-mysql"
+      MYSQL_SERVICE_USER: "${A9_NACOS_DB_USER}"
+      MYSQL_SERVICE_PASSWORD: "${A9_NACOS_DB_PASSWORD}"
+      MYSQL_SERVICE_DB_NAME: "${A9_NACOS_DB_DATABASE}"
+      MYSQL_SERVICE_DB_PARAM: "characterEncoding=utf8&connectTimeout=100000&socketTimeout=300000&autoReconnect=true&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true"
+    depends_on:
+      - a9-nacos-mysql
+    links:
+      - a9-nacos-mysql:a9-nacos-mysql
+
+  a9-nacos-mysql:
+    image: mysql
+    container_name: a9-nacos-mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "${A9_NACOS_DB_PASSWORD}"
+      MYSQL_DATABASE: "${A9_NACOS_DB_DATABASE}"
+    volumes:
+      - ./nacos:/docker-entrypoint-initdb.d
 
 volumes:
   mongo_db:
