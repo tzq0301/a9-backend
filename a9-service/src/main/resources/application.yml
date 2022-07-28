@@ -1,0 +1,29 @@
+spring:
+  redis:
+    host: a9-redis-master
+    password: 123456
+  data:
+    mongodb:
+      uri: mongodb://a9-mongo:27017/a9
+
+jwt:
+  algo:
+    secret: cn-soft-bei-a9
+  issuer: a9
+  expiration: 36000  # 10 hours
+
+oss:
+  endpoint: https://oss-cn-hangzhou.aliyuncs.com
+  accessKeyId: LTAI5t6gFRY8vs2D9om9d9oV
+  accessKeySecret: GgAeLHRAohJ7vQI5amZ8Z28fLRxi1V
+  bucketName: tzq-oos-1
+  rootPath: a9
+
+tencent:
+  secretId: AKID743pOioeFbiZBYgYBZicHgqkOnOlupVw
+  secretKey: EDwQffQwDE0Wnoa7PSGp8C1bw1rey2pM
+  endpoint: nlp.tencentcloudapi.com
+  region: ap-guangzhou
+
+baidu:
+  access_token: 24.439bde6ca9cb06728a46cc5b2f334560.2592000.1659087852.282335-26580448

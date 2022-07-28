@@ -75,7 +75,7 @@ public class JWTUtils {
      * @throws JWTVerificationException Invalid signature/claims
      */
     public DecodedJWT verify(final String token) throws JWTVerificationException {
-        if (redisTemplate.opsForValue().get(token) != null) {
+        if (redisTemplate.opsForValue().get(token) == null) {
             log.info("Token has not been loaded into cache yet -> {}", token);
             throw new JWTVerificationException("The token is not created by current application");
         }
@@ -91,4 +91,7 @@ public class JWTUtils {
         return verify(header.substring(LENGTH_OF_PREFIX_OF_AUTHORIZATION)).getToken();
     }
 
+    public void delete(final String token) {
+        redisTemplate.delete(token);
+    }
 }

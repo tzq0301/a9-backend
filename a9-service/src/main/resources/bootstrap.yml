@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: a9-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: a9-nacos:8848
+server:
+  port: 10002

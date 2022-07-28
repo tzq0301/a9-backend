@@ -13,6 +13,7 @@
     <modules>
         <module>a9-auth</module>
         <module>a9-gateway</module>
+        <module>a9-service</module>
     </modules>
 
     <name>a9-backend</name>
@@ -51,6 +52,12 @@
         <spring.data.mongo.version>2.7.0</spring.data.mongo.version>
         <guava.version>30.1-jre</guava.version>
         <jwt.version>3.19.2</jwt.version>
+        <oss.version>3.10.2</oss.version>
+        <jaxb-api.version>2.3.1</jaxb-api.version>
+        <jaxb-activation.version>1.1.1</jaxb-activation.version>
+        <jaxb-runtime.version>2.3.3</jaxb-runtime.version>
+        <tencentcloud-sdk-java.version>3.1.322</tencentcloud-sdk-java.version>
+        <jsoup.version>1.10.2</jsoup.version>
     </properties>
 
     <dependencyManagement>
@@ -96,6 +103,43 @@
                 <groupId>com.auth0</groupId>
                 <artifactId>java-jwt</artifactId>
                 <version>${jwt.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>com.aliyun.oss</groupId>
+                <artifactId>aliyun-sdk-oss</artifactId>
+                <version>${oss.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.xml.bind</groupId>
+                <artifactId>jaxb-api</artifactId>
+                <version>${jaxb-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.activation</groupId>
+                <artifactId>activation</artifactId>
+                <version>${jaxb-activation.version}</version>
+            </dependency>
+            <!-- no more than 2.3.3-->
+            <dependency>
+                <groupId>org.glassfish.jaxb</groupId>
+                <artifactId>jaxb-runtime</artifactId>
+                <version>${jaxb-runtime.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.tencentcloudapi</groupId>
+                <artifactId>tencentcloud-sdk-java</artifactId>
+                <!-- go to https://search.maven.org/search?q=tencentcloud-sdk-java and get the latest version. -->
+                <!-- 请到https://search.maven.org/search?q=tencentcloud-sdk-java查询所有版本，最新版本如下 -->
+                <version>${tencentcloud-sdk-java.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jsoup</groupId>
+                <artifactId>jsoup</artifactId>
+                <version>${jsoup.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

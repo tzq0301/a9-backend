@@ -19,6 +19,10 @@ spring:
         - id: auth
           uri: lb://a9-auth
           predicates:
-            - Path=/user/**
+            - Path=/user/login,/user/register
           filters:
             - StripPrefix=1
+        - id: service
+          uri: lb://a9-service
+          predicates:
+            - Path=/user/**

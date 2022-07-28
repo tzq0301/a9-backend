@@ -37,6 +37,19 @@ services:
       - a9-mongo:a9-mongo
       - a9-nacos:a9-nacos
 
+  a9-service:
+    container_name: a9-service
+    build:
+      context: a9-service
+    ports:
+      - "${A9_SERVICE_PORT}:${A9_SERVICE_PORT}"
+    depends_on:
+      - a9-mongo
+      - a9-nacos
+    links:
+      - a9-mongo:a9-mongo
+      - a9-nacos:a9-nacos
+
   a9-nacos:
     image: nacos/nacos-server:v2.1.0-slim
     container_name: a9-nacos
