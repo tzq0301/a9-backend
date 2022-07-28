@@ -1,3 +1,12 @@
 spring:
   profiles:
     active: prod
+  redis:
+    host: a9-redis-master
+    password: 123456
+
+jwt:
+  algo:
+    secret: cn-soft-bei-a9
+  issuer: a9
+  expiration: 36000  # 10 hours

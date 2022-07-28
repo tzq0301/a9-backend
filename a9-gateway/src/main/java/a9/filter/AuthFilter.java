@@ -66,10 +66,10 @@ public class AuthFilter implements GlobalFilter, Ordered {
     }
 
     private boolean isLoginPath(final String path) {
-        return "/auth/login".equals(path);
+        return "/user/login".equals(path);
     }
 
     private boolean isRegisterPath(final String path) {
-        return "/auth/register".equals(path);
+        return "/user/register".equals(path);
     }
 }
