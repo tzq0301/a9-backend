@@ -27,3 +27,6 @@ tencent:
 
 baidu:
   access_token: 24.439bde6ca9cb06728a46cc5b2f334560.2592000.1659087852.282335-26580448
+
+tg:
+  url: http://a9-text-generation:8000

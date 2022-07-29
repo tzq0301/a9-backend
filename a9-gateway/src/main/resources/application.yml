@@ -25,4 +25,4 @@ spring:
         - id: service
           uri: lb://a9-service
           predicates:
-            - Path=/user/**
+            - Path=/user/**,/article/**,/editor/**,/template/**
