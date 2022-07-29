@@ -5,9 +5,9 @@ services:
     image: mongo:4.4.6
     container_name: a9-mongo
     volumes:
-      - mongo_db:/data/db
-      - mongo_backup:/data/backup
-      - mongo_configdb:/data/configdb
+      - mongodb_db:/data/db
+      - mongodb_backup:/data/backup
+      - mongodb_configdb:/data/configdb
     ports:
       - "27017:27017"
 
@@ -49,6 +49,31 @@ services:
     links:
       - a9-mongo:a9-mongo
       - a9-nacos:a9-nacos
+
+  a9-schedule:
+    container_name: a9-schedule
+    build:
+      context: a9-schedule
+    ports:
+      - "${A9_SCHEDULE_PORT}:${A9_SCHEDULE_PORT}"
+    depends_on:
+      - a9-mongo
+      - a9-nacos
+    links:
+      - a9-mongo:a9-mongo
+      - a9-nacos:a9-nacos
+
+#  a9-text-generation:
+#    container_name: a9-text-generation
+#    image: tzq0301/a9-text-generation:v7
+#    ports:
+#      - "${A9_TEXT_GENERATION_PORT}:${A9_TEXT_GENERATION_PORT}"
+#    depends_on:
+#      - a9-mongo
+#      - a9-nacos
+#    links:
+#      - a9-mongo:a9-mongo
+#      - a9-nacos:a9-nacos
 
   a9-nacos:
     image: nacos/nacos-server:v2.1.0-slim
@@ -113,11 +138,11 @@ services:
       - redis_slave_2_data:/data/
 
 volumes:
-  mongo_db:
+  mongodb_db:
     driver: local
-  mongo_backup:
+  mongodb_backup:
     driver: local
-  mongo_configdb:
+  mongodb_configdb:
     driver: local
   redis_master_conf:
     driver: local

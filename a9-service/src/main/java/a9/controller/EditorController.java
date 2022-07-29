@@ -26,8 +26,6 @@ public class EditorController {
 
     @PostMapping("/title_generation")
     public Result<String> titleGenerate(@RequestBody @NotNull String text) {
-        // FIXME data preprocess
-
         var title = titleGenerationService.titleGenerate(text);
 
         if (title.isEmpty()) {
@@ -39,8 +37,6 @@ public class EditorController {
 
     @PostMapping("/abstract_generation")
     public Result<String> abstractGenerate(@RequestBody @NotNull String text) {
-        // FIXME data preprocess
-
         var title = titleGenerationService.abstractGenerate(text);
 
         if (title.isEmpty()) {
