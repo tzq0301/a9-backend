@@ -1,7 +1,0 @@
-spring:
-  data:
-    mongodb:
-      uri: mongodb://a9-mongo:27017/a9
-
-baidu:
-  access_token: 24.439bde6ca9cb06728a46cc5b2f334560.2592000.1659087852.282335-26580448

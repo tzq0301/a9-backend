@@ -13,8 +13,7 @@ services:
 
   a9-gateway:
     container_name: a9-gateway
-    build:
-      context: a9-gateway
+    image: tzq0301/a9-backend_a9-gateway
     ports:
       - "${A9_GATEWAY_PORT}:${A9_GATEWAY_PORT}"
     depends_on:
@@ -26,8 +25,7 @@ services:
 
   a9-auth:
     container_name: a9-auth
-    build:
-      context: a9-auth
+    image: tzq0301/a9-backend_a9-auth
     ports:
       - "${A9_AUTH_PORT}:${A9_AUTH_PORT}"
     depends_on:
@@ -39,8 +37,7 @@ services:
 
   a9-service:
     container_name: a9-service
-    build:
-      context: a9-service
+    image: tzq0301/a9-backend_a9-service
     ports:
       - "${A9_SERVICE_PORT}:${A9_SERVICE_PORT}"
     depends_on:
@@ -50,30 +47,17 @@ services:
       - a9-mongo:a9-mongo
       - a9-nacos:a9-nacos
 
-#  a9-schedule:
-#    container_name: a9-schedule
-#    build:
-#      context: a9-schedule
-#    ports:
-#      - "${A9_SCHEDULE_PORT}:${A9_SCHEDULE_PORT}"
-#    depends_on:
-#      - a9-mongo
-#      - a9-nacos
-#    links:
-#      - a9-mongo:a9-mongo
-#      - a9-nacos:a9-nacos
-
-#  a9-text-generation:
-#    container_name: a9-text-generation
-#    image: tzq0301/a9-text-generation:v7
-#    ports:
-#      - "${A9_TEXT_GENERATION_PORT}:${A9_TEXT_GENERATION_PORT}"
-#    depends_on:
-#      - a9-mongo
-#      - a9-nacos
-#    links:
-#      - a9-mongo:a9-mongo
-#      - a9-nacos:a9-nacos
+  a9-text-generation:
+    container_name: a9-text-generation
+    image: tzq0301/a9-text-generation:v7
+    ports:
+      - "${A9_TEXT_GENERATION_PORT}:${A9_TEXT_GENERATION_PORT}"
+    depends_on:
+      - a9-mongo
+      - a9-nacos
+    links:
+      - a9-mongo:a9-mongo
+      - a9-nacos:a9-nacos
 
   a9-nacos:
     image: nacos/nacos-server:v2.1.0-slim

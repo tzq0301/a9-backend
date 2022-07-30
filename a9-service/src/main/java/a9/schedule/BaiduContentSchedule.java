@@ -1,5 +1,7 @@
-package a9.event;
+package a9.schedule;
 
+import a9.manager.BaiduManager;
+import a9.repository.ContentRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.scheduling.annotation.Async;
@@ -21,7 +23,7 @@ public class BaiduContentSchedule {
     }
 
     @Async
-    @Scheduled(fixedRate = 1000 * 60 * 60 * 24, initialDelay = 0)
+//    @Scheduled(fixedRate = 1000 * 60 * 60 * 24, initialDelay = 0)
     public void fetchDataAndSaveToDatabase() {
         log.info("Fetching data");
         contentRepository.save(baiduManager.getContents());

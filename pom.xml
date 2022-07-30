@@ -14,7 +14,6 @@
         <module>a9-auth</module>
         <module>a9-gateway</module>
         <module>a9-service</module>
-        <module>a9-schedule</module>
     </modules>
 
     <name>a9-backend</name>
