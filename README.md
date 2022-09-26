@@ -1,14 +1,18 @@
-# 2022 中软杯 A9 智能创作平台 后端微服务
+# 2022 中软杯 A9 智能创作平台 · 后端微服务
 
 ## 荣誉奖项
 
 第十一届“中国软件杯”大学生软件设计大赛**全国二等奖**
 
+## 项目介绍
+
+「字影」聚焦于使用**人工智能**赋能内容生产，提高**内容生产效率**，解放**内容生产力**
+
+- 智能：使用人工智能技术辅助创作，为新闻创作提供灵感，提高创作效率
+- 创作：搭建完善的创作系统，拥有丰富的写作辅助功能与人性化的文本编辑套件，赋能知识创作
+- 平台：使用前沿开发技术，结合高效作品管理方式，搭建完善的新闻编辑平台，助力 AIGC 系统发展
+
 ## 后端架构
-
-### 功能结构
-
-![功能结构图](https://tzq-oos-1.oss-cn-hangzhou.aliyuncs.com/img/%E5%8A%9F%E8%83%BD%E7%BB%93%E6%9E%84%E5%9B%BE.png)
 
 ### 微服务架构
 
@@ -18,11 +22,15 @@
 
 ### 系统架构设计
 
-![系统架构设计](https://tzq-oos-1.oss-cn-hangzhou.aliyuncs.com/img/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1.jpeg)
+<img src="https://tzq-oos-1.oss-cn-hangzhou.aliyuncs.com/img/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1.jpeg#pic_center" width="50%" ></img>
 
 ### 部署架构图
 
-![A9-架构图](https://tzq-oos-1.oss-cn-hangzhou.aliyuncs.com/img/A9-%E6%9E%B6%E6%9E%84%E5%9B%BE.jpeg)
+<img src="https://tzq-oos-1.oss-cn-hangzhou.aliyuncs.com/img/A9-%E6%9E%B6%E6%9E%84%E5%9B%BE.jpeg#pic_center" width="50%" ></img>
+
+## 标题生成算法
+
+详见 GitHub 仓库 [tzq0301/title-generation-v4](https://github.com/tzq0301/title-generation-v4)
 
 ## 展示视频
 
