@@ -23,7 +23,7 @@ public class BaiduContentSchedule {
     }
 
     @Async
-//    @Scheduled(fixedRate = 1000 * 60 * 60 * 24, initialDelay = 0)
+    @Scheduled(fixedRate = 1000 * 60 * 60 * 24, initialDelay = 0)
     public void fetchDataAndSaveToDatabase() {
         log.info("Fetching data");
         contentRepository.save(baiduManager.getContents());
